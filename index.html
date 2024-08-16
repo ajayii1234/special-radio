@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Yes/No Radio Example with Custom Behavior</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-check {
+            border: 1px solid grey;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .form-check.active {
+            border-color: blue;
+        }
+        .option-text {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: grey;
+            color: white;
+            border-radius: 15%;
+            margin-right: 10px;
+        }
+        .form-check.active .option-text {
+            background-color: blue;
+        }
+        /* Hide the radio buttons */
+        .form-check-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <form>
+            <div class="form-group">
+                <label>Please choose an option:</label>
+                <div class="form-check" id="yesDiv">
+                    <div class="option-text">A</div>
+                    <input class="form-check-input" type="radio" name="yesNoOption" id="yesOption" value="yes">
+                    <label class="form-check-label" for="yesOption">Yes</label>
+                </div>
+                <div class="form-check" id="noDiv">
+                    <div class="option-text">B</div>
+                    <input class="form-check-input" type="radio" name="yesNoOption" id="noOption" value="no">
+                    <label class="form-check-label" for="noOption">No</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // jQuery to handle the click event and add/remove the 'active' class
+        $(document).ready(function() {
+            $('.form-check').on('click', function() {
+                $('.form-check').removeClass('active');
+                $(this).addClass('active');
+                $(this).find('input').prop('checked', true);
+            });
+        });
+    </script>
+</body>
+</html>
